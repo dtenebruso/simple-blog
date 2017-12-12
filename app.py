@@ -1,12 +1,10 @@
 __author__ = 'pr0c'
 
-import pymongo
+from models.post import Post
 
-uri = "mongodb://127.0.0.1:27017"
-client = pymongo.MongoClient(uri)
-database = client['test']
-collection = database['students']
+post = Post("Post1 title", "Post1 content","Post1 author")
+post2 = Post("Post2 title", "Post2 content","Post2 author")
 
-students = [student for student in collection.find({}) if student['mark'] == 99]
+print(post.content)
 
-print(students)
+print(post2.content)
