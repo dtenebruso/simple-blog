@@ -1,13 +1,17 @@
-__author__ = 'pr0c'
-
 from database import Database
 from models.post import Post
 
+__author__ = 'pr0c'
+
 Database.initialize()
 
-post = Post("Post1 title", "Post1 content","Post1 author")
-post2 = Post("Post2 title", "Post2 content","Post2 author")
+post = Post(blog_id="123",
+            title="Another Post",
+            content="Some Content",
+            author="pr0c")
 
-print(post.content)
+post.save_to_mongo()
 
-print(post2.content)
+post2 = Post(blog_id="123",
+             title="Gamify Your Life",
+             content="This week on lifeWire we're discussing how to Gamify your life\n")
