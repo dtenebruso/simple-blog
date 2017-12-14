@@ -8,12 +8,12 @@ class Menu(object):
         self.user = input("Enter your author name: ")
         self.user_blog = None
         if self._user_has_account():
-            print("Welcome back{}".format(self.user))
+            print("Welcome back {}".format(self.user))
         else:
             self._prompt_user_for_account()
 
     def _user_has_account(self):
-        blog = Database.find_one('blogs', {'author': self.user}) is not None
+        blog = Database.find_one('blogs', {'author': self.user})
         if blog is not None:
             self.user_blog = Blog.from_mongo(blog['id'])
             return True
@@ -35,7 +35,7 @@ class Menu(object):
             self._list_blogs()
             self._view_blog()
             pass
-        if read_or_write.upper() == 'W':
+        elif read_or_write.upper() == 'W':
             self.user_blog.new_post()
         else:
             print("Thank you for blogging!")
